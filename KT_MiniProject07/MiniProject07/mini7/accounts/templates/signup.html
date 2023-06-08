@@ -1,0 +1,83 @@
+<!-- accounts/templates/signup.html -->
+{% block content %}
+<style>
+    body{
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #ffffff;
+    }
+  
+    .wrapper {
+        width: 300px;
+        margin: 50px auto;
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        text-align: center;
+    }
+  
+    h1 {
+        color: #000000;
+        font-size: 24px;
+    }
+  
+    form {
+        margin-top: 20px;
+    }
+    
+    label {
+        color: #000000;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+  
+    input[type="submit"] {
+        font-family: 'Poppins', sans-serif;
+        background-color: #4bc5b8;
+        color: #ffffff;
+        cursor: pointer;
+    }
+  
+    input[type="submit"]:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+</style>
+
+<div class="wrapper">
+    <h1>SIGNUP</h1>
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}">ID</label>
+        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" maxlength="150" required>
+        <small>150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.</small><br>
+
+        <label for="{{ form.password1.id_for_label }}">PW</label>
+        <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" required>
+        <small>영문 대 소문자/숫자/특수문자 조합으로 8자 이상만 가능합니다 </small><br>
+        <label for="{{ form.password2.id_for_label }}">PW CHECK</label>
+        <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" required>
+
+        <input type="submit" value="SIGNUP">
+    </form>
+</div>
+
+
+{% endblock %}

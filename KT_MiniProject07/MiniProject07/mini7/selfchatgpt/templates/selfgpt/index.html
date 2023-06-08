@@ -1,0 +1,89 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+<style>
+    
+    body {
+        background-color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 80px auto;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        text-align: center;
+        display: block;
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    textarea {
+        width: 100%;
+        height: 250px;
+        background-color: #ffffff;
+        padding: 10px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        resize: none;
+    }
+
+    button {
+        background-color: #4bc5b8;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+    .back {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #4bc5b8;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    
+    .back:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+</style>
+{% endblock %}
+
+<form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div id="file-module-0">
+        <label>Question</label>
+        <textarea id="question" name="question"></textarea>
+    </div>
+    <div class="button-container" style="text-align: center;">
+        <a href="/" class="back">Back</a>
+        <button id="text-button" type="submit">Ask</button>
+    </div>
+    
+</form>

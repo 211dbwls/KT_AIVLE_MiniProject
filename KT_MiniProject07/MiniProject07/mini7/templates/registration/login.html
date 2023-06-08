@@ -1,0 +1,176 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet">
+
+<header>
+    <nav class="wrap">
+        <label>
+            <a href="/"><strong>Sign Language with ChatGPT</strong></a>
+        </label>
+        <ul>
+            {% comment %} <li><a href="/accounts/login">login</a></li> {% endcomment %}
+            <li><a href="/accounts/signup">signup</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="one-box">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label>회원가입</label>
+
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <div class='btns'>
+            <input class='btn' type="submit" value="login">
+            <input type="hidden" name="next" value="{{ next }}">
+            <a class="back" href="/">Back</a>
+        </btn>
+    </form>
+
+    {% if form.errors %}
+        <p>사용자 이름과 비밀번호가 일치하지 않습니다.<br/>다시 시도하세요.</p>
+    {% endif %}
+        <a class="btn" href="{% url 'password_reset' %}">비밀번호 찾기</a>
+</div>
+<style>
+    body{
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #F6F1F1;  
+    }
+
+    header{
+        height: 85px;
+        background-color: #146C94;
+        color: black;
+        margin-bottom: 15px;
+    }
+    
+    header>nav{
+        margin: 0 auto;
+        padding: 20px 20px;
+    }
+    
+    header>nav>label{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 32px;
+        color: #F6F1F1;
+        float: left;
+    }
+    
+    header>nav>ul{
+        font-family: 'Noto Sans KR', sans-serif;
+        float: right;
+        font-size: 24px;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+    
+    header>nav>ul>li{
+        float: left;
+        list-style: none;
+        margin-left: 20px;
+    }
+    
+    header>nav>ul>li>a{
+        text-decoration: none;
+        font-weight: bold;
+        color: #F6F1F1;
+    }
+
+    ol {
+        line-height: 3;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+    a:visited {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: #F6F1F1;
+    }
+</style>
+
+<style>
+    .one-box {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #AFD3E2;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        text-align: right;
+        background-color: #AFD3E2;
+        padding: 20px;
+    }
+    
+    label {
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #146C94;
+    }
+    
+    .btn {
+        background-color: #146C94;
+        color: #F6F1F1;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    
+    .btn:hover {
+        background-color: #F6F1F1;
+        color: #146C94;
+        border: 1px solid #146C94;
+        text-weight: bold;
+    }
+    
+    .back {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #146C94;
+        color: #F6F1F1;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    
+    .back:hover {
+        background-color: #F6F1F1;
+        color: #146C94;
+        border: 1px solid #146C94;
+        text-weight: bold;
+    }
+
+    p {
+        color: #146C94;
+    }
+</style>

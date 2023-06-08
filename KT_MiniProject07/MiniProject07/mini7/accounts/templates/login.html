@@ -1,0 +1,71 @@
+{% block content %}
+<style>
+    body {
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #ffffff;
+    }
+
+    .wrapper {
+        width: 300px;
+        margin: 50px auto;
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+    h1 {
+        color: #000000;
+        font-size: 24px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        color: #000000;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+        font-family: 'Poppins', sans-serif;
+        background-color: #4bc5b8;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+
+</style>
+
+<div class="wrapper">
+    <h1>LOGIN</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}">ID</label>
+        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" required><br>
+
+        <label for="{{ form.password.id_for_label }}">PW</label>
+        <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" required><br>
+
+        <input type="submit" value="LOGIN">
+        
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'selflanguagechat/style.css' %}">
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    form {
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    label {
+        text-align: center;
+        font-size: 48px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #000000;
+        
+    }
+    h1 {
+        font-size: 24px;
+        color: #000000;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+
+    fieldset {
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    legend {
+        font-size: 20px;
+        color: #3578FB;
+        margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+        margin-top: 60px;
+        margin-bottom: 10px;
+        margin-left: 30px;
+    }
+
+    button {
+        background-color: #4bc5b8;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+        margin-top:50px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4bc5b8;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+    input:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+    .back {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #4bc5b8;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    
+    .back:hover {
+        background-color: #CCCCCC;
+        color: #4bc5b8;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button,
+    .button-container input[type="submit"],
+    .button-container a {
+        margin: 0 5px;
+    }
+</style>
+{% endblock %}
+<form action="chat" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">File Upload</label>
+    <span id="file-module-0">
+        <fieldset>
+            <input name="files" type="file">
+        </fieldset>
+    </span>
+    <div class="button-container">
+        <a href="/" class="back">Back</a>
+        <button onclick="addFile()" type="button">Add File</button>
+        <input type="submit" value="Ask">
+    </div>
+</form>
+<script>
+    let idNum = 0;
+    function addFile(){
+        deepCopy();
+    }
+
+    function deepCopy()  {
+      const fileModule = document.getElementById('file-module-'+idNum);
+      const newNode = fileModule.cloneNode(true);
+
+      idNum++;
+      newNode.id = 'file-module-' + idNum;
+
+      fileModule.after(newNode);
+    }
+</script>
