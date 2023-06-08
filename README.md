@@ -11,5 +11,5 @@
 * 네비게이션 도착시간 예측
 * 스마트폰 센서 데이터 기반 인간 행동 인식 분류
 * [Aivle 스쿨 지원 질문, 답변 챗봇 만들기](https://github.com/211dbwls/AI_Portfolio/tree/main/KT_MiniProject06_01)
-* 장애인 이동권 개선을 위한 장애인 콜택시 대기 시간 예측
+* [장애인 이동권 개선을 위한 장애인 콜택시 대기 시간 예측](https://github.com/211dbwls/AI_Portfolio/tree/main/KT_MiniProjcet06_02)
 * [ChatGPT를 수어로 사용하는 웹서비스 데모 구현](https://github.com/211dbwls/AI_Portfolio/tree/main/KT_MiniProject07)
