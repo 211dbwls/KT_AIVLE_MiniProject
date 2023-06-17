@@ -1,0 +1,393 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <title>Big Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Righteous&family=Roboto&display=swap" rel="stylesheet">
+
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">{% endcomment %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/board.js' %}"></script>
+    
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0px;    
+            padding: 0px;
+            background-color: #FFFFFF;
+        }
+
+        header {
+            width: 100%;
+            height: 70px;
+            background-color: white;
+            color: black;
+            margin-bottom: 15px;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+            padding: 0;
+        }
+
+        header>nav {
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+
+        header>nav>label {
+            font-family: 'Righteous';
+            font-weight:bold;
+            font-size: 32px;
+            color: black;
+        }
+
+        header>nav>ul {
+            font-family: 'Noto Sans KR', sans-serif;
+            float: right;
+            font-size: 24px;
+            margin-top: -5px;
+            margin-right: 15px;
+            color: black;
+        }
+
+        header>nav>ul>li {
+            float: left;
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        header>nav>ul>li>a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+            font-family: Roboto;
+        }
+
+        .wrap{
+            max-width:1200px;
+        }
+
+        .wrap a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrap a:hover{
+            color: inherit;
+        }
+
+        .contents {
+            display: block;
+            min-height: calc(100% - 12vh);
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;    
+        }
+
+        .p1_div a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .p1_div a:hover{
+            color: inherit;
+        }
+
+        .p1_div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .p1{
+            height: 52px;
+            margin: 10px 50px;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 47px;
+
+            color: #000000;
+        }
+
+        .consults {
+            display: block;
+            margin: 10px 50px;
+            height: 70vh;
+        }
+        
+        .table_title {
+            color: black;
+            text-decoration: underline black;
+        }
+        .table_title:focus,
+        .table_title:hover {
+            display: inline-block;
+            color: gray;
+            text-decoration: underline gray;
+        }
+
+        .btn {
+            display: flex;
+            margin: 10px 50px;
+            padding: 0;
+            justify-content: flex-end;
+        }
+
+        .posting-button{
+            width: 150px;
+            height: 50px;
+            font-family: Roboto;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color:white;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+        .posting-button:hover {
+            background-color: #D9D9D9;
+            color: #000000;
+        }
+
+        footer {
+            height: 12vh; 
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            margin-top: 5vh;
+        }
+        footer>p{
+            margin: 0;
+            text-align: center;
+        }
+
+    </style>
+
+    <style>
+        ul.tabs{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        ul.tabs li{
+            background: none;
+            color: #222;
+            display: inline-block;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        
+        ul.tabs li.current{
+            background: #ededed;
+            color: #222;
+        }
+        
+        .tab-content{
+            display: none;
+            background: #ededed;
+            padding: 15px;
+        }
+        
+        .tab-content.current{
+            display: inherit;
+        }
+    </style>
+
+    <style>
+        /* common */
+        .tab-table {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            border-top: 2px solid #121212;
+            background: white;
+        }
+        .tab-table table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .tab-table table thead tr th,
+        .tab-table table tbody tr td {
+            text-align: center;
+            padding: 0.8125vw 1.25vw;
+            font-size: 15px;
+            font-size: 1.3vw;
+            line-height: 1.375vw;
+        }
+        .tab-table table thead tr th {
+            border-bottom: 1px solid #121212;
+        }
+        .tab-table table tbody tr td {
+            border-bottom: 1px solid #efefef;
+        }
+
+        /* desktop only */
+        @media screen and (min-width: 1200px) {
+            .tab-table table thead tr th,
+            .tab-table table tbody tr td {
+                padding: 12px 20px;
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+
+        /* mobile only */
+        @media screen and (max-width: 990px) {
+            .tab-table table col {
+                width: 100% !important;
+            }
+            .tab-table table thead {
+                display: none;
+            }
+            .tab-table table tbody tr {
+                border-bottom: 1px solid #efefef;
+            }
+            .tab-table table tbody tr td {
+                width: 100%;
+                display: flex;
+                margin-bottom: 2px;
+                padding: 5px;
+                border-bottom: none;
+                font-size: 14px;
+                line-height: 18px;
+            }
+            .tab-table table tbody tr td:first-child, 
+            .tab-table table tbody tr th:first-child {
+                padding-top: 16px;
+            }
+            .tab-table table tbody tr td:last-child, 
+            .tab-table table tbody tr th:last-child {
+                padding-bottom: 15px;
+            }
+            .tab-table table tbody tr td:before {
+                display: inline-block;
+                margin-right: 12px;
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 100px;
+                flex: 0 0 100px;
+                font-weight: 700;
+                content: attr(data-label);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="wrap">
+            <label>
+                <a href="/">
+                    <strong>
+                        Consulting
+                    </strong>
+                </a>
+            </label>
+            <!-- ul>li*3>a -->
+            <ul>            
+                {% if request.user.is_authenticated %}
+                    <li><a href="/mypage">{{ request.user.username }}</a></li>
+                    <li><a href="/">home</a></li>
+                    <li><a class="nav-link" href="/accounts/logout/">logout</a></li>
+                {% else %}
+                    <li><a href="/">home</a></li>
+                    <li><a class="nav-link" href="/accounts/login/">login</a></li>
+                    <li><a class="nav-link" href="/accounts/signup/">signup</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contents">
+        <div class="p1_div">
+            <p class="p1"><a href="/boards/">Notice</a></p>
+        </div>
+
+        <div class="consults">
+            <ul class="tabs">
+                <li class="tab-link current" data-tab="tab-1">FAQ</li>
+                <li class="tab-link" data-tab="tab-2">Inquiry</li>
+            </ul>
+        
+            <div id="tab-1" class="tab-content current">
+                <div class="tab-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>TITILE</th>
+                                <th>WRITER</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        {% for p in posts_faq %}
+                            <tbody>
+                                <tr>
+                                    <th>{{ forloop.counter }}</th>
+                                    <th><a class="table_title" href="{% url 'boards:faq_detail' p.id %}">{{ p.title }}</a></th>
+                                    <th>{{ p.writer }}</th>
+                                    <th>{{ p.date }}</th>
+                                </tr>
+                            </tbody>
+                            {% empty %}
+                            <tbody>
+                                <tr>
+                                    <th colspan="4" style="text-align:center">No consultation history.</th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-2" class="tab-content">
+                <div class="tab-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>TITILE</th>
+                                <th>WRITER</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        {% for p in posts_inquiry %}
+                            <tbody>
+                                <tr>
+                                    <th>{{ forloop.counter }}</th>
+                                    <th><a class="table_title" href="{% url 'boards:inquiry_detail' p.id %}">{{ p.title }}</a></th>
+                                    <th>{{ p.writer }}</th>
+                                    <th>{{ p.date }}</th>
+                                </tr>
+                            </tbody>
+                            {% empty %}
+                            <tbody>
+                                <tr>
+                                    <th colspan="4" style="text-align:center">No consultation history.</th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="btn">
+            <a href="posting/"><button class="posting-button">Posting</button></a>
+        </div>
+    </main>
+
+    <footer>
+        <p>All rights reserved. ©KT AIVLESCHOOL 14</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <main id="main">
+        <div class="p1_div">
+            <p class="p1"><a href="/boards/">Notice</a></p>
+        </div>
+
+        <div class="consults">
+            <ul class="tabs">
+                <li class="tab-link current" data-tab="tab-1">FAQ</li>
+                <li class="tab-link" data-tab="tab-2">Inquiry</li>
+            </ul>
+        
+            <div id="tab-1" class="tab-content current">
+                <div class="tab-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>TITILE</th>
+                                <th>WRITER</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        {% for p in posts_faq %}
+                            <tbody>
+                                <tr>
+                                    <th>{{ forloop.counter }}</th>
+                                    <th><a class="table_title" href="{% url 'boards:faq_detail' p.id %}">{{ p.title }}</a></th>
+                                    <th>{{ p.writer }}</th>
+                                    <th>{{ p.date }}</th>
+                                </tr>
+                            </tbody>
+                            {% empty %}
+                            <tbody>
+                                <tr>
+                                    <th colspan="4" style="text-align:center">No consultation history.</th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-2" class="tab-content">
+                <div class="tab-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>TITILE</th>
+                                <th>WRITER</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        {% for p in posts_inquiry %}
+                            <tbody>
+                                <tr>
+                                    <th>{{ forloop.counter }}</th>
+                                    <th><a class="table_title" href="{% url 'boards:inquiry_detail' p.id %}">{{ p.title }}</a></th>
+                                    <th>{{ p.writer }}</th>
+                                    <th>{{ p.date }}</th>
+                                </tr>
+                            </tbody>
+                            {% empty %}
+                            <tbody>
+                                <tr>
+                                    <th colspan="4" style="text-align:center">No consultation history.</th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn">
+            <a href="posting/"><button class="posting-button">Posting</button></a>
+        </div>
+    </main>
+{% endblock %}

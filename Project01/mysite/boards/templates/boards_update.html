@@ -1,0 +1,264 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <title>Big Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Righteous&family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/mypage.js' %}"></script>
+    
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0px;    
+            padding: 0px;
+            background-color: #FFFFFF;
+        }
+
+        header {
+            width: 100%;
+            height: 85px;
+            background-color: white;
+            color: black;
+            margin-bottom: 15px;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+            padding: 0;
+        }
+
+        header>nav {
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+
+        header>nav>label {
+            font-family: 'Righteous';
+            font-weight:bold;
+            font-size: 32px;
+            color: black;
+        }
+
+        header>nav>ul {
+            font-family: 'Noto Sans KR', sans-serif;
+            float: right;
+            font-size: 24px;
+            margin-top: -5px;
+            margin-right: 15px;
+            color: black;
+        }
+
+        header>nav>ul>li {
+            float: left;
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        header>nav>ul>li>a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+            font-family: Roboto;
+        }
+
+        .wrap{
+            max-width:1200px;
+        }
+
+        .wrap a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrap a:hover{
+            color: inherit;
+        }
+
+        .contents {
+            display: block;
+            min-height: calc(100% - 12vh);
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;    
+        }
+
+        .p1_div a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .p1_div a:hover{
+            color: inherit;
+        }
+
+        .p1_div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .p1{
+            height: 52px;
+            margin: 10px 50px;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 47px;
+
+            color: #000000;
+        }
+
+        .update_form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            margin: 10px 50px;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 35px;
+
+            color: #6D6D6D;
+        }
+        .update_detail {
+            display: flex;
+            justify-content: space-between;
+        }
+        .update_detail>p {
+            margin: 5px 0px;
+        }
+        .update_detail>label {
+            margin: 5px 0px;
+        }
+        .update_detail>input,
+        .update_detail>select, 
+        .post_text>textarea  {
+            margin: 5px 0px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 15px;
+        }
+
+        .post_text {
+            flex-direction: column;
+        }
+        .post_text>textarea {
+            height: 70vh;
+            resize: none;
+        }
+
+        .consults {
+            display: block;
+            margin: 10px 50px;
+        }
+
+        .btn {
+            display: flex;
+            margin: 10px 0px;
+            justify-content: flex-end;
+        }
+
+        .edit-button{
+            width: 150px;
+            height: 50px;
+            font-family: Roboto;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color:white;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+        .edit-button:hover {
+            background-color: #D9D9D9;
+            color: #000000;
+        }
+
+        footer {
+            height: 12vh; 
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            margin-top: 5vh;
+        }
+        footer>p{
+            margin: 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="wrap">
+            <label>
+                <a href="/">
+                    <strong>
+                        Consulting
+                    </strong>
+                </a>
+            </label>
+            <!-- ul>li*3>a -->
+            <ul>            
+                {% if request.user.is_authenticated %}
+                    <li><a href="/mypage">{{ request.user.username }}</a></li>
+                    <li><a href="/">home</a></li>
+                    <li><a class="nav-link" href="/accounts/logout/">logout</a></li>
+                {% else %}
+                    <li><a href="/">home</a></li>
+                    <li><a class="nav-link" href="/accounts/login/">login</a></li>
+                    <li><a class="nav-link" href="/accounts/signup/">signup</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contents">
+        <div class="p1_div">
+            <p class="p1"><a href="/boards/">Notice</a> > <a href="boards/update/">Edit</a></p>
+        </div>
+
+        <form method="POST" class="update_form" id="UpdateForm" name="UpdateForm">
+            {% csrf_token %}
+            <div class="update_detail post_text">
+                <label for="{{ form.title.id_for_label }}">Title</label>
+                <input type="text" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" 
+                        value="{{ post.title }}">
+            </div>
+            
+            <div class="update_detail">
+                <p>Writer</p>
+                <p>{{ post.writer}}</p>
+            </div>
+
+            <div class="update_detail">
+                <label for="{{ form.category.id_for_label }}">Category</label>
+                <select id="{{ form.category.id_for_label }}" name="{{ form.category.html_name }}" disabled>
+                    <option value="{{ post.category }}">{{ post.category }}</option>
+                </select>
+            </div>
+            
+            <div class="update_detail post_text">
+                <label for="{{ form.detail.id_for_label }}">Contents</label>
+                {{ form.detail }}
+            </div>
+
+            <div class="btn">
+                <input class="edit-button" type="submit" value="Edit">
+            </div>
+        </form>
+
+    <footer>
+        <p>All rights reserved. ©KT AIVLESCHOOL 14</p>
+    </footer>
+</body>
+</html>
