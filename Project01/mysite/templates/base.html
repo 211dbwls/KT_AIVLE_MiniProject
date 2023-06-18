@@ -28,6 +28,7 @@
 
         <!-- Template Main CSS File -->
         <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
 
         {% block static %}
         {% endblock %}
@@ -62,43 +63,32 @@
         <header id="header" class="header d-flex align-items-center">
 
             <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{% url 'index' %}" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1>Impact<span>.</span></h1>
+                <h1>제목<span>.</span></h1>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                    <li><a href="#">Drop Down 1</a></li>
-                    <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li><a href="#hero">홈</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li class="dropdown"><a href="{% url 'boards:boards' %}"><span>공지</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                        <li><a href="#">Deep Drop Down 1</a></li>
-                        <li><a href="#">Deep Drop Down 2</a></li>
-                        <li><a href="#">Deep Drop Down 3</a></li>
-                        <li><a href="#">Deep Drop Down 4</a></li>
-                        <li><a href="#">Deep Drop Down 5</a></li>
+                        <li><a href="#">자주 묻는 질문</a></li>
+                        <li><a href="#">문의하기</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Drop Down 2</a></li>
-                    <li><a href="#">Drop Down 3</a></li>
-                    <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="{% url 'boards:boards' %}"><span>공지</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                    <li><a href="#">자주 묻는 질문</a></li>
-                    <li><a href="#">문의하기</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
+                    {% if reqeust.user.is_authenticated %}
+                        <li><a href="#contact">내 정보</a></li>
+                        <li><a href="#contact">로그아웃</a></li>
+                    {% else %}
+                        <li><a href="{% url 'accounts:login' %}">로그인</a></li>
+                        <li><a href="#contact">회원가입</a></li>
+                    {% endif %}
                 </ul>
             </nav><!-- .navbar -->
 
@@ -198,6 +188,10 @@
 
         <!-- Template Main JS File -->
         <script src="{% static 'assets/js/main.js' %}"></script>
+
+        
+        {% block static_js %}
+        {% endblock %}
 
     </body>
 

@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
+    <link href="{% static 'css/boards.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block main %}
     <main id="main">
-        <div class="p1_div">
-            <p class="p1"><a href="/boards/">Notice</a></p>
+        <div class="title-wrap">
+            <p><a href="/boards/">Notice</a></p>
         </div>
 
-        <div class="consults">
+        <div class="tabs-wrap">
             <ul class="tabs">
                 <li class="tab-link current" data-tab="tab-1">FAQ</li>
                 <li class="tab-link" data-tab="tab-2">Inquiry</li>
             </ul>
         
+            <!-- FAQ -->
             <div id="tab-1" class="tab-content current">
                 <div class="tab-table">
                     <table>
@@ -43,6 +49,7 @@
                 </div>
             </div>
 
+            <!-- Inquiry -->
             <div id="tab-2" class="tab-content">
                 <div class="tab-table">
                     <table>
@@ -75,8 +82,13 @@
             </div>
         </div>
 
-        <div class="btn">
-            <a href="posting/"><button class="posting-button">Posting</button></a>
+        <div class="btns-wrap">
+            <a href="posting/"><button class="btn">Posting</button></a>
         </div>
     </main>
+{% endblock %}
+
+
+{% block static_js %}
+    <script src="{% static 'js/boards.js' %}"></script>
 {% endblock %}

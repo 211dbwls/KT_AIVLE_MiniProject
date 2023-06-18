@@ -1,0 +1,190 @@
+:root {
+    --maincolor1: #E38B29;
+    --maincolor2: #F1A661;
+    --maincolor3: #FFD8A9;
+    --maincolor4: #FDEEDC;
+}
+
+.main {
+    display: block;
+    min-height: calc(100% - 12vh);
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;    
+}
+
+/* Title */
+.title-wrap a{
+    text-decoration: none;
+    color: inherit;
+}
+.title-wrap a:hover{
+    color: inherit;
+}
+
+.title-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.title-wrap>p{
+    height: 52px;
+    margin: 10px 50px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 47px;
+
+    color: #000000;
+}
+
+/* Tabs */
+.tabs-wrap {
+    display: block;
+    margin: 10px 50px;
+    height: 70vh;
+}
+
+.table_title {
+    color: black;
+    text-decoration: underline black;
+}
+.table_title:focus,
+.table_title:hover {
+    display: inline-block;
+    color: gray;
+    text-decoration: underline gray;
+}
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.tabs li.current{
+    background: #ededed;
+    color: #222;
+}
+
+.tab-content{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+}
+
+.tab-content.current{
+    display: inherit;
+}
+
+/* common */
+.tab-table {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    border-top: 2px solid #121212;
+    background: white;
+}
+.tab-table table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.tab-table table thead tr th,
+.tab-table table tbody tr td {
+    text-align: center;
+    padding: 0.8125vw 1.25vw;
+    font-size: 15px;
+    font-size: 1.3vw;
+    line-height: 1.375vw;
+}
+.tab-table table thead tr th {
+    border-bottom: 1px solid #121212;
+}
+.tab-table table tbody tr td {
+    border-bottom: 1px solid #efefef;
+}
+
+/* desktop only */
+@media screen and (min-width: 1200px) {
+    .tab-table table thead tr th,
+    .tab-table table tbody tr td {
+        padding: 12px 20px;
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+/* mobile only */
+@media screen and (max-width: 990px) {
+    .tab-table table col {
+        width: 100% !important;
+    }
+    .tab-table table thead {
+        display: none;
+    }
+    .tab-table table tbody tr {
+        border-bottom: 1px solid #efefef;
+    }
+    .tab-table table tbody tr td {
+        width: 100%;
+        display: flex;
+        margin-bottom: 2px;
+        padding: 5px;
+        border-bottom: none;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .tab-table table tbody tr td:first-child, 
+    .tab-table table tbody tr th:first-child {
+        padding-top: 16px;
+    }
+    .tab-table table tbody tr td:last-child, 
+    .tab-table table tbody tr th:last-child {
+        padding-bottom: 15px;
+    }
+    .tab-table table tbody tr td:before {
+        display: inline-block;
+        margin-right: 12px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100px;
+        flex: 0 0 100px;
+        font-weight: 700;
+        content: attr(data-label);
+    }
+}
+
+/* Button */
+.btns-wrap {
+    display: flex;
+    margin: 10px 50px;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+.btn{
+    width: 150px;
+    height: 50px;
+    font-family: Roboto;
+    font-size: 20px;
+    background-color: white;
+    color: var(--maincolor1);
+    border: solid 2px var(--maincolor1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: var(--maincolor1);
+    color: white;
+}
