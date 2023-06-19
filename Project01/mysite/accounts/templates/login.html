@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block static %}
-    <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
     <main id="main">
         <div class="wrapper">
             <div class="containers">
+                <!-- 회원가입 -->
                 <div class="sign-up-container">
                     <form method="POST" class="forms">
                         {% csrf_token %}
@@ -25,14 +26,17 @@
                             </div>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="아이디">
-                        <input type="text" placeholder="성">
-                        <input type="text" placeholder="이름">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="비밀번호">
-                        <button class="btns form_btn">회원가입</button>
+                        <input type="text" id="{{ signup_form.username.id_for_label }}" name="{{ signup_form.username.html_name }}" placeholder="아이디">
+                        <input type="password" id="{{ signup_form.password.id_for_label }}" name="{{ signup_form.password.html_name }}" placeholder="비밀번호">
+                        <input type="password" id="{{ signup_form.password_check.id_for_label }}" name="{{ signup_form.password_check.html_name }}" placeholder="비밀번호">
+                        <input type="text" id="{{ signup_form.first_name.id_for_label }}" name="{{ signup_form.first_name.html_name }}" placeholder="성">
+                        <input type="text" id="{{ signup_form.last_name.id_for_label }}" name="{{ signup_form.last_name.html_name }}" placeholder="이름">
+                        <input type="email" id="{{ signup_form.email.id_for_label }}" name="{{ signup_form.email.html_name }}" placeholder="Email">
+                        <input type="password" id="{{ signup_form.phone_number.id_for_label }}" name="{{ signup_form.phone_number.html_name }}" placeholder="비밀번호">
+                        <button class="btns form_btn" type="submit">회원가입</button>
                     </form>
                 </div>
+                <!-- 로그인 -->
                 <div class="sign-in-container">
                     <form method="POST" class="forms">
                         {% csrf_token %}
@@ -49,11 +53,12 @@
                             </div>
                         </div>
                         <span>or use your account</span>
-                        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" placeholder="아이디">
-                        <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호">
+                        <input type="text" id="{{ login_form.username.id_for_label }}" name="{{ login_form.username.html_name }}" placeholder="아이디">
+                        <input type="password" id="{{ login_form.password.id_for_label }}" name="{{ login_form.password.html_name }}" placeholder="비밀번호">
                         <button class="btns form_btn" type="submit">로그인</button>
                     </form>
                 </div>
+                <!-- 회원가입/로그인 -->
                 <div class="overlay-container">
                     <div class="overlay-left">
                         <h1>Welcome Back</h1>
