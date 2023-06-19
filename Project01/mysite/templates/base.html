@@ -85,7 +85,7 @@
                     </li>
                     {% if request.user.is_authenticated %}
                         <li><a href="#contact">내 정보</a></li>
-                        <li><a href="#contact">로그아웃</a></li>
+                        <li><a href="{% url 'accounts:logout' %}">로그아웃</a></li>
                     {% else %}
                         <li><a href="{% url 'accounts:login' %}">로그인</a></li>
                     {% endif %}
