@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block main %}
   <!-- ======= Hero Section ======= -->
@@ -61,7 +62,6 @@
 
   <main id="main">
     
-
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
@@ -944,4 +944,7 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+{% endblock %}
+
+{% block static_js %}
 {% endblock %}

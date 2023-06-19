@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql' ,
         'HOST': '127.0.0.1' ,
         'PORT': '3306',
-        'NAME': 'Pro01',
+        'NAME': 'Project01DB',
         'USER': 'root',
         'PASSWORD': '5787',
     }
