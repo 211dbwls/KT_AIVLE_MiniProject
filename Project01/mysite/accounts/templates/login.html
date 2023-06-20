@@ -11,9 +11,10 @@
             <div class="containers">
                 <!-- 회원가입 -->
                 <div class="sign-up-container">
-                    <form method="POST" class="forms">
+                    <form method="POST" class="forms" action="{% url 'accounts:signup' %}">
                         {% csrf_token %}
                         <h1>회원가입</h1>
+                        <!--
                         <div class="social-links">
                             <div>
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -26,21 +27,20 @@
                             </div>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" id="{{ signup_form.username.id_for_label }}" name="{{ signup_form.username.html_name }}" placeholder="아이디">
-                        <input type="password" id="{{ signup_form.password.id_for_label }}" name="{{ signup_form.password.html_name }}" placeholder="비밀번호">
-                        <input type="password" id="{{ signup_form.password_check.id_for_label }}" name="{{ signup_form.password_check.html_name }}" placeholder="비밀번호">
-                        <input type="text" id="{{ signup_form.first_name.id_for_label }}" name="{{ signup_form.first_name.html_name }}" placeholder="성">
-                        <input type="text" id="{{ signup_form.last_name.id_for_label }}" name="{{ signup_form.last_name.html_name }}" placeholder="이름">
-                        <input type="email" id="{{ signup_form.email.id_for_label }}" name="{{ signup_form.email.html_name }}" placeholder="Email">
-                        <input type="password" id="{{ signup_form.phone_number.id_for_label }}" name="{{ signup_form.phone_number.html_name }}" placeholder="비밀번호">
+                        -->
+                        <input type="text" id="{{ signup_form.username.id_for_label }}" name="{{ signup_form.username.html_name }}" placeholder="아이디" required>
+                        <input type="password" id="{{ signup_form.password1.id_for_label }}" name="{{ signup_form.password1.html_name }}" placeholder="비밀번호" required>
+                        <input type="password" id="{{ signup_form.password2.id_for_label }}" name="{{ signup_form.password2.html_name }}" placeholder="비밀번호 확인" required>
+                        <input type="email" id="{{ signup_form.email.id_for_label }}" name="{{ signup_form.email.html_name }}" placeholder="Email" required>
                         <button class="btns form_btn" type="submit">회원가입</button>
                     </form>
                 </div>
                 <!-- 로그인 -->
                 <div class="sign-in-container">
-                    <form method="POST" class="forms">
+                    <form method="POST" class="forms" action="{% url 'accounts:login' %}">
                         {% csrf_token %}
                         <h1>로그인</h1>
+                        <!--
                         <div class="social-links">
                             <div>
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -53,21 +53,22 @@
                             </div>
                         </div>
                         <span>or use your account</span>
-                        <input type="text" id="{{ login_form.username.id_for_label }}" name="{{ login_form.username.html_name }}" placeholder="아이디">
-                        <input type="password" id="{{ login_form.password.id_for_label }}" name="{{ login_form.password.html_name }}" placeholder="비밀번호">
+                        -->
+                        <input type="text" id="{{ login_form.username.id_for_label }}" name="{{ login_form.username.html_name }}" placeholder="아이디" required>
+                        <input type="password" id="{{ login_form.password.id_for_label }}" name="{{ login_form.password.html_name }}" placeholder="비밀번호" required>
                         <button class="btns form_btn" type="submit">로그인</button>
                     </form>
                 </div>
                 <!-- 회원가입/로그인 -->
                 <div class="overlay-container">
                     <div class="overlay-left">
-                        <h1>Welcome Back</h1>
-                        <p>To keep connected with us please login with your personal info</p>
+                        <h1>환영합니다</h1>
+                        <p>우리 사이트를 더 이용하고 싶다면,<br>로그인 후 사용해주세요:)</p>
                         <button id="signIn" class="btns overlay_btn">로그인</button>
                     </div>
                     <div class="overlay-right">
-                        <h1>Hello, Friend</h1>
-                        <p>Enter your personal details and start journey with us</p>
+                        <h1>반갑습니다</h1>
+                        <p>우리 사이트를 더 많이 알고 싶다면,<br>회원가입 해주세요:)</p>
                         <button id="signUp" class="btns overlay_btn">회원가입</button>
                     </div>
                 </div>
