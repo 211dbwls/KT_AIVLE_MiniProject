@@ -1,0 +1,49 @@
+<form method="POST">
+    {% csrf_token%}
+    <div>
+        <label for="text">To</label>
+        <textarea name="text" style="height: 200px; width: 300px;"></textarea>
+        
+        <label for="result-text">From</label>
+        <textarea name="result-text" style="height: 200px; width: 300px;">{{ resultText }}</textarea>
+    </div>
+
+    <div>
+        <label for="from-lang">From</label>
+        <select name="trans-from" id="from-lang">
+            <option value="ko">Korean</option>
+            <option value="en">English</option>
+            <option value="ja">Japanese</option>
+            <option value="zh-">Chinese</option>
+            <option value="vi">Vietnamese</option>
+            <option value="th">Thai</option>
+        </select>
+        
+        <label for="to-lang">To</label>
+        <select name="trans-to" id="to-lang">
+            <option value="ko">Korean</option>
+            <option value="en">English</option>
+            <option value="ja">Japanese</option>
+            <option value="zh-">Chinese</option>
+            <option value="vi">Vietnamese</option>
+            <option value="th">Thai</option>
+        </select>
+
+        <button type="submit" formaction="{% url 'boards:translate' %}">TRANSLATE</button>
+    </div>
+
+    <div>
+        <label for="lang">Language</label>
+        <select name="languages" id="lang">
+            <option value="ko-KR-SunHiNeural">Korean</option>
+            <option value="en-US-JennyNeural">English</option>
+            <option value="ja-JP-NanamiNeural">Japanese</option>
+            <option value="wuu-CN-XiaotongNeural">Chinese</option>
+            <option value="vi-VN-HoaiMyNeural">Vietnamese</option>
+            <option value="th-TH-PremwadeeNeural">Thai</option>
+        </select>
+        
+        <button type="submit" formaction="{% url 'boards:tts_test' %}">TTS</button>
+    </div>
+</form>
+

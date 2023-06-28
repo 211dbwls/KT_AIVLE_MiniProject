@@ -11,4 +11,6 @@ urlpatterns = [
     path('delete/<bpk>', views.delete, name='delete'),
     path('creply/<bpk>', views.creply, name='creply'),
     path('dreply/<bpk>/<rpk>', views.dreply, name='dreply'),
+    path('tts_test/', views.tts_test, name='tts_test'),
+    path('translate/', views.translate, name='translate')
 ]
