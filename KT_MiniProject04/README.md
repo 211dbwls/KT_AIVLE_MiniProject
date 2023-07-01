@@ -1,4 +1,4 @@
-# KT AIVLE EDU 1:1 문의 유형 분류 🚖
+# KT AIVLE EDU 1:1 문의 유형 분류 📋
 
 KT AIVLE MiniProject 4차
 
